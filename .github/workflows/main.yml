@@ -14,18 +14,22 @@ on:
 
 jobs:
   W1:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     # 超时设置
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
+          
       - name: Setup FFmpeg using versions
         uses: Iamshankhadeep/setup-ffmpeg@v1.2
-      - name: 'Environment Settings'
+        
+      - name: Setup Environment
         run: |
           pip install --upgrade pip
+          pip install Pillow pyscreenshot
           pip install -r ./requirements.txt
+          
       - name: 'Renew'
         env:
           URL_BASE: ${{ secrets.URL_BASE_W }}
@@ -41,14 +45,18 @@ jobs:
     # 超时设置
     timeout-minutes: 20
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
+          
       - name: Setup FFmpeg using versions
         uses: Iamshankhadeep/setup-ffmpeg@v1.2
-      - name: 'Environment Settings'
+        
+      - name: Setup Environment
         run: |
           pip install --upgrade pip
+          pip install Pillow pyscreenshot
           pip install -r ./requirements.txt
+          
       - name: 'Renew'
         env:
           URL_BASE: ${{ secrets.URL_BASE_W }}
